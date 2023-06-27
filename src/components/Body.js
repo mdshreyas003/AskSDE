@@ -46,7 +46,12 @@ const Body =()=>{
     },[])
     async function getProblems()
     {
-        const data = await fetch("https://asksde.onrender.com/api/problemset/")
+        const data = await fetch("https://asksde.onrender.com/api/problemset/",{
+            method: "GET",
+            headers:{
+                'Content-Type':'application/json',
+            },
+        })
         const json = await data?.json()
         // console.log(json.problems[0])
         setOrginalList(json?.problems)
@@ -121,6 +126,7 @@ const Body =()=>{
         })
         setProblemList([...f])
         setFlag("All")
+        setCurrPg(1)
     }
     return(
         <>

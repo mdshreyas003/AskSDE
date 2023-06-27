@@ -14,7 +14,8 @@ module.exports = {
       'transperent':'transperent',
       'indigo':'indigo',
       'warning':'#e4a11b',
-      'red':'red'
+      'red':'red',
+      'light-grey':'#1e1e00'
 
     },
   },

@@ -29,7 +29,7 @@ function Pagenation({problemPerPage, totalProblem, goto, currPg}) {
             Prev
         </button>
         {finalPgno.map(no=>(
-                <a className={ (no===currPg)? 'bg-green text-black p-2 rounded-lg hover:bg-lightgreen' : "bg-white text-black p-2 rounded-lg hover:bg-lightgreen" } href="" onClick={()=>goto(no)}>
+                <a className={ (no===currPg)? 'bg-green text-black p-2 rounded-lg hover:bg-lightgreen' : "bg-white text-black p-2 rounded-lg hover:bg-lightgreen" } href="#" onClick={(e)=>{e.preventDefault(); goto(no)}}>
                     {no}
                 </a>
             ))}

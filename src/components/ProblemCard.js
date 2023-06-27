@@ -30,9 +30,9 @@ const ProblemCard = (props)=>{
     // console.log(localStorage?.getItem(props.problem.id))
     return(
         <>
-            <div className="bg-grey px-8 flex justify-between py-2.5 text-white rounded-lg mb-6">
+            <div className="bg-grey px-8 flex flex-wrap justify-between py-2.5 text-white rounded-lg mb-6">
                 <div>
-                <a href={props.problem.link} rel="noreferrer"  target={"_blank"} className="font-mono font-bold text-3xl cursor-pointer w-fit ">
+                <a href={props.problem.link} rel="noreferrer"  target={"_blank"} className="font-mono font-bold text-3xl cursor-pointer w-fit break-all">
                     {props.problem.name}
                 </a>
                 <div className="flex space-x-4 w-fit flex-wrap mt-2.5">
