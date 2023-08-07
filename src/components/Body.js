@@ -5,6 +5,30 @@ import Category from "./Category";
 import NameSearch from './NameSearch'
 
 import {SignOut, Name} from './Auth'
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+const Search = ({categories, getSolved, flag, sortCategory,searchName, globalCt})=>{
+    return(
+        
+            <header class="text-gray-600 body-font shadow-lightgreen shadow-sm mb-5 bg-grey">
+              
+                    
+            
+            <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+              {/* name */}
+              <Name globalCt={globalCt} getSolved={getSolved} flag={flag} />
+              
+              <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+                
+                    Category:<Category categories={categories?.sort()} sortCategory={sortCategory}/>
+                    <NameSearch searchName={searchName} />            
+              </nav>
+              <SignOut/>
+            </div>
+          </header>
+    );
+};
+
 const Body =()=>{
     const [orginalList, setOrginalList] = useState([])
     const [searchValue,setSearchValue] = useState("")
@@ -130,25 +154,12 @@ const Body =()=>{
     }
     return(
         <>
-        <div className="w-full px-4 flex justify-between text-center shadow-lightgreen shadow-sm py-4 bg-grey">
-        <Name/>
-        <h1 class="bg-gradient-to-r from-blue via-lightgreen to-green mb-2 mt-0 text-5xl font-bold leading-tight text-transperent bg-clip-text ">
-            Become Zero. To <span className="text-green font-extrabold">Hero</span> 🚀😎 <span>{"["+globalCt +' / '+ orginalList.length+"]"}</span>
-        </h1>
-        <SignOut/>
-        </div>
-                <div className="flex space-x-2 py-3 m-4 rounded-md  pl-52 mb-6 text-white ">
-                    <button 
-                      class="rounded bg-warning  p-2.5 text-xs font-medium uppercase leading-normal text-white "
-                    onClick={getSolved}>{flag}</button>
-            <Category categories={categories?.sort()} sortCategory={sortCategory}/>
-            <NameSearch searchName={searchName} />
-            <Pagenation currPg={currPg} goto={goto} problemPerPage={problemPerPage} totalProblem = {problemList.length} />
             
-            </div>
+            <Search searchName={searchName} sortCategory={sortCategory} flag={flag} categories={categories} getSolved={getSolved} globalCt={globalCt} />
             {/* <div className="text-center">Current Page: {currPg}</div> */}
             <ProblemPage  problemList={currPgList} setGlobalCount={setGlobalCount} />
             <Pagenation currPg={currPg} goto={goto} problemPerPage={problemPerPage} totalProblem = {problemList.length} />
+            <Footer/>
         </>
     )
 }

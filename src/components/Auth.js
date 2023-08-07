@@ -6,6 +6,9 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Body from './Body';
 import GoogleButton from 'react-google-button'
 import bg from '../assets/bg.webp'
+import Footer from './Footer';
+import Solved from "./Solved";
+
 firebase.initializeApp({
   apiKey: "AIzaSyAj1WRgwVQGnVoonvr4LDm7bcXXIP4wDS4",
   authDomain: "asksde-ad8be.firebaseapp.com",
@@ -35,8 +38,11 @@ function SignIn() {
         <GoogleButton
         onClick={signInWithGoogle}
         />
-        <p className='mt-6 font-mono font-light text-center'>Made by MD_SHREYAS</p>
+        <p>
+        <Footer/>
+        </p>
       </div>
+      
       
         <img src={bg} className='w-64 l-0 mt-48 h-60'/>
       </div>
@@ -46,6 +52,7 @@ function SignIn() {
   
   function SignOut() {
     return auth.currentUser && (
+      
       <button className="bg-red p-1.5 w-fit  rounded-md" onClick={() => auth.signOut()}>Logout</button>
     )
   }
@@ -62,12 +69,15 @@ function SignIn() {
     );
   }
 
-  function Name()
+  function Name({globalCt, getSolved,flag})
   {
     return(
         <h1>
-            <h2>Welcome back,</h2>
-            {auth.currentUser.displayName.toUpperCase()}
+            <h2>Welcome, {auth.currentUser.displayName.toUpperCase().split(' ')[0]}</h2>
+            <div className="text-green ml-1 text-lg">
+                Solved: {globalCt} / 900
+              </div>
+              <Solved getSolved={getSolved} flag={flag} />
         </h1>
     )
   }

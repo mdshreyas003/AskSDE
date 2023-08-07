@@ -18,7 +18,7 @@ function Pagenation({problemPerPage, totalProblem, goto, currPg}) {
         finalPgno = pgnos.slice(start-1,end)
     }
       return (
-    <div className=" p-4 space-x-4 flex justify-center text-center ">
+    <div className=" p-4 space-x-0.5 flex justify-center text-center ">
         <button onClick={()=>{
             if(start >10)
             {
